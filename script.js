@@ -20,14 +20,14 @@ $('input').keyup(function(){
 	$('#end_decimal').html(((end_h*60 + end_m)/60).toFixed(2)); 
 
 	// to 12-hour format
-	if (start_h > 12) {
+	if (start_h > 11) {
 		$('#start_12f').html(start_h - 12 + ":" + String(start_m).padStart(2, '0') + " PM"); 
 	}
 	else {
 		$('#start_12f').html(start_h + ":" + String(start_m).padStart(2, '0') + " AM"); 
 	}
 
-	if (end_h > 12) {
+	if (end_h > 11) {
 		$('#end_12f').html(end_h - 12 + ":" + String(end_m).padStart(2, '0') + " PM"); 
 	}
 	else {
