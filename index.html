@@ -39,10 +39,12 @@
                 <!--input-->
                 <tr>
                     <!--Start Time-->
-                    <td><input id='start' type="number" placeholder="hhmm" maxlength="4" max="2359" />
+                    <td><input id='start' type="number" placeholder="hhmm" maxlength="4"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                     </td>
                     <!--End Time-->
-                    <td><input id='end' type="number" placeholder="hhmm" maxlength="4" max="2359" />
+                    <td><input id='end' type="number" placeholder="hhmm" maxlength="4"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                     </td>
                     <!--Lunch-->
                     <td><input id='lunch' type="number" placeholder="minutes" />
