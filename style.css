@@ -6,20 +6,21 @@
 }
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 0 10px;
     min-height: 100vh;
     background: #09b5af;
+    margin: 20px;
+    display: grid;
+    place-items: center;
 }
 
-.container {
+.container, .savedRecords {
     max-width: 700px;
     width: 100%;
     padding: 30px;
     background: #fff;
     border-radius: 7px;
+    margin-top: 10px;
 }
 
 .note {
@@ -28,7 +29,7 @@ body {
     margin-bottom: 30px;
 }
 
-th {
+th, .recordtotal {
     font-weight: 600;
 }
 
@@ -57,15 +58,76 @@ hr {
     border: 1px solid #000000;
 }
 
-.result {
+.result, #recordsum {
     color: #ff0000;
     text-align: left;
     padding-left: 15px;
     font-size: 20px;
 }
 
-#start_decimal, #end_decimal, #total_decimal {
+#start_decimal, #end_decimal, #total_decimal, .result-grey, #recordsum_mins {
     color: #cbcbcb;
+}
+
+.savesubmit {
+    text-align: center;
+}
+
+#savebtn {
+    border: none;
+    background: none;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 8px 14px;
+    margin-top: 18px;
+    font-size: 1.2rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#savebtn:hover {
+    background-color: #09b5af;
+    color: #000000;
+}
+
+h2 {
+    display: inline;
+    margin-right: 5px;
+}
+
+.recordtotal {
+    text-align: right;
+}
+
+.savedrow {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0px;
+    padding: 15px;
+    background-color: #e4eeee;
+}
+
+#clearall {
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+button.del {
+    border: none;
+    background: none;
+    background-color: #ffffff;
+    padding: 4px 8px;
+    font-size: 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#clearall:hover, button.del:hover {
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .github-corner:hover .octo-arm {

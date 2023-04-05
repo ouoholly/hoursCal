@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.0.0/remixicon.min.css">
 
     <!-- Favico source: https://favicon.io/emoji-favicons/timer-clock/ -->
     <link rel="shortcut icon" href="favicon.ico" />
@@ -47,7 +48,7 @@
                             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                     </td>
                     <!--Lunch-->
-                    <td><input id='lunch' type="number" placeholder="minutes" />
+                    <td><input id='lunch' type="number" placeholder="minutes" value="0" />
                     </td>
                 </tr>
 
@@ -72,13 +73,36 @@
         <table>
             <tr>
                 <th>Total duration: </th>
-                <td class="result"><span id="total_h">0 hours 0 minutes</span> <span id="total_m"></span></td>
+                <td class="result" id="calTotal"><span id="total_h">0</span> hours <span id="total_m">0</span> minutes
+                </td>
             </tr>
             <tr>
                 <th>Decimal hours: </th>
-                <td class="result"><span id="total_decimal">0.0000 hours</span></td>
+                <td class="result result-grey"><span id="total_decimal">0.0000</span> hours</td>
+            </tr>
+            <tr>
+                <th>Total minutes: </th>
+                <td class="result result-grey"><span id="total_minutes">0</span> minutes</td>
             </tr>
         </table>
+        <div class="savesubmit">
+            <input type="submit" id="savebtn" value="Save" />
+        </div>
+
+    </div>
+
+    <!-- saved records -->
+    <div class="savedRecords">
+        <h2>Saved history</h2>
+        <input type="submit" id="clearall" value="Clear All" />
+        <div class="recordtotal">TOTAL:
+            <span id="recordsum"> NA </span><br />
+            <span id="recordsum_mins"> NA </span>
+        </div>
+
+        <div class="savedcontent">
+            No saved record yet...
+        </div>
 
     </div>
 
