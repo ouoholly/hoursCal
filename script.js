@@ -56,7 +56,6 @@ var recordsTotal = document.querySelector("#recordsum");
 var recordsTotal_mins = document.querySelector("#recordsum_mins");
 
 var savedSection = document.querySelector(".savedcontent");
-var savedrow = document.querySelector(".savedrow");
 
 var saveBtn = document.querySelector("#savebtn");
 var clearBtn = document.querySelector("#clearall");
@@ -106,7 +105,7 @@ function addToPage(recordsArray) {
 		<div class="savedrow">
 			<span class="savedinfo">
 			${r.s1.slice(0, 2)}:${r.s1.slice(2, 4)} - ${r.s2.slice(0, 2)}:${r.s2.slice(2, 4)} (deduct ${r.s3} mins) = <b>${r.s4}</b> (<span class="minsToSum">${r.s5}</span> mins)</span>
-			<button class="del" onclick="delR(${r.s5});"><i class="ri-delete-bin-fill"></i></button> 
+			<button class="del" onclick="delR(${r.s5}, ${r.id});"><i class="ri-delete-bin-fill"></i></button> 
         </div>
 		`;
 		savedSection.innerHTML += eachRecord
@@ -123,11 +122,21 @@ function calRecordsSum(){
 }
 
 // Delete individual record
-function delR(num){
+function delR(num, id){
+
+	// adjust recordsSum sumup total value
 	num = -Math.abs(num);
 	recordsSum.push(num);
 	calRecordsSum();
+
+	// delete record in recordsArray
+	const indexOfObject = recordsArray.findIndex(object => {
+		return object.id === id;	
+	});
+	recordsArray.splice(indexOfObject, 1);
+	//console.log(recordsArray);
 }
+
 $(document).on('click', '.del', function(e) {
 	e.preventDefault();
 	$(this).closest('.savedrow').remove();
