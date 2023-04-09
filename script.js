@@ -55,7 +55,8 @@ var minsTotal = document.querySelector("#total_minutes");
 var recordsTotal = document.querySelector("#recordsum");
 var recordsTotal_mins = document.querySelector("#recordsum_mins");
 
-var savedSection = document.querySelector(".savedcontent")
+var savedSection = document.querySelector(".savedcontent");
+var savedrow = document.querySelector(".savedrow");
 
 var saveBtn = document.querySelector("#savebtn");
 var clearBtn = document.querySelector("#clearall");
@@ -102,10 +103,10 @@ function addToArray (saved_startTimeInput, saved_endTimeInput, saved_lunchTimeIn
 function addToPage(recordsArray) {
 	for (let r of recordsArray) {
 		eachRecord = `
-		<div class="savedrow" data-id="${r.id}">
+		<div class="savedrow">
 			<span class="savedinfo">
 			${r.s1.slice(0, 2)}:${r.s1.slice(2, 4)} - ${r.s2.slice(0, 2)}:${r.s2.slice(2, 4)} (deduct ${r.s3} mins) = <b>${r.s4}</b> (<span class="minsToSum">${r.s5}</span> mins)</span>
-			<!-- STILL TESTING <button class="del"><i class="ri-delete-bin-fill"></i></button> -->
+			<button class="del" onclick="delR(${r.s5});"><i class="ri-delete-bin-fill"></i></button> 
         </div>
 		`;
 		savedSection.innerHTML += eachRecord
@@ -121,15 +122,14 @@ function calRecordsSum(){
 	recordsTotal_mins.innerHTML = sum + " minutes"
 }
 
-// -- STILL TESTING -- //
-// // Delete individual record
-// savedSection.onclick = ((e) => {
-//     if (e.target.classList.contains("del")) {
-// 		e.target.parentElement.remove();
-// 		// el = e.target.parentElement;
-// 		// arrayID = el.getAttribute('data-id');
-// 		// console.log(arrayID)
-//     }
-// })
-
-
+// Delete individual record
+function delR(num){
+	num = -Math.abs(num);
+	recordsSum.push(num);
+	calRecordsSum();
+}
+$(document).on('click', '.del', function(e) {
+	e.preventDefault();
+	$(this).closest('.savedrow').remove();
+	return false;
+});
